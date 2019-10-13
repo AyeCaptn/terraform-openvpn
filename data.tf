@@ -14,13 +14,15 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-data "aws_availability_zones" "available" {}
+data "aws_availability_zones" "available" {
+}
 
 data "template_file" "user_data" {
-  template = "${file("${path.module}/templates/user_data.sh.tpl")}"
+  template = file("${path.module}/templates/user_data.sh.tpl")
 
-  vars {
-    docker_image = "${var.docker_image}"
-    ssh_user     = "${var.ssh_user}"
+  vars = {
+    docker_image = var.docker_image
+    ssh_user     = var.ssh_user
   }
 }
+

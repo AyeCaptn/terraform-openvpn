@@ -1,5 +1,6 @@
 # Required Inputs
-variable "aws_key_pair_name" {}
+variable "aws_key_pair_name" {
+}
 
 # Defaults
 variable "client_name" {
